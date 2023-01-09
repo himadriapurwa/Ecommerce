@@ -3,11 +3,12 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { ProductsModule } from './products/products.module';
-import { AdminModule } from './admin/admin.module';
+
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './users/entities/user.entity';
-import { Admin } from './admin/entities/admin.entity';
+
 import { Product } from './products/entities/product.entity';
+import { ProductCategoryModule } from './product_category/product_category.module';
 
 @Module({
   imports: [
@@ -18,12 +19,12 @@ import { Product } from './products/entities/product.entity';
       username: 'root',
       password: '12345678',
       database: 'ecommerce',
-      entities: [User, Product, Admin],
+      entities: [User, Product, ProductCategoryModule],
       synchronize: true,
     }),
     UsersModule,
     ProductsModule,
-    AdminModule,
+    ProductCategoryModule,
   ],
   controllers: [AppController],
   providers: [AppService],
